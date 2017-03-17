@@ -1,0 +1,13 @@
+-- SF - Data Equivalency Check 
+-- Pulling overall count and amount of volume of loans based on status
+-- VARIABLE: {name: "statustype", display: "Status", type:"select", options:["TBD_Approved_Date__c","Approved_W_Property_Date__c"
+--,"TBD_Not_Approvable_As_Is_Date__c","Cond_W_UW_Date__c","With_Closing_Date__c"]}
+
+
+select 
+  count(*) "Count of Total Loans", 
+  sum(a.Loan_With__c) "Value of Total Loans" 
+from 
+  LOAN__C a 
+  join STATUS__C b on a.ID = b.loan__c 
+where b.{{statustype}} is not null

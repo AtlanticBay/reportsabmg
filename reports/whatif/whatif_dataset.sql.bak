@@ -1,0 +1,6 @@
+-- Dataset - Joined Assignments
+-- Runs a report to join the retail assignments to the existing production snapshot report in byte. 
+-- This is the basis of how the whatif reports will be created from
+-- OPTIONS: { database: "whatif"}
+
+select * from `whatif`.whatif_datasetretail

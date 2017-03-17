@@ -1,0 +1,15 @@
+-- Pivot Test
+--
+-- INFO: {created: "2017-02-20"}
+-- OPTIONS:{database:"ado"}
+-- ROLLUP: {columns:{"Underwriter_Byte_User_Name":"Total","Total": "{{sum}}"}}
+
+
+tables: whatif.whatif_datasetretail
+rows: Underwriter_Byte_User_Name, LoanOfficer
+columns: CONCAT(MONTHNAME(STR_TO_DATE(status_fundingdate,'%m/%d/%Y')),YEAR(STR_TO_DATE(status_fundingdate,'%m/%d/%Y')))
+#agg_field:LoanOfficer
+#agg_label: Number of
+agg_fun: SUM
+show_count: true
+

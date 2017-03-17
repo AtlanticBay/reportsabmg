@@ -1,0 +1,21 @@
+{
+	"title": "Total Rollups Byte and SF",
+	"description": "Total value of loans and total count of loans",
+	"reports": [
+		{
+			"report": "tkdashboard/byterollup.sql",
+			"title": "Byte Rollup",
+			"format": "html",
+			"newRow": false,
+			"style": "max-height: 400px; overflow-y: auto; overflow-x: hidden;",
+			"class":"col-md-6"
+		},
+		{
+			"report":"tkdashboard/sf.sql",
+			"title":"SF Rollup",
+			"format": "chart",
+			"newRow": false,
+			"class":"col-md-6"
+		}
+	]
+}

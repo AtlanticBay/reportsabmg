@@ -1,0 +1,42 @@
+-- Byte - Data Equivalency Check
+-- Pulling overall count and amount of volumne based on loan statuses
+-- VARIABLE: {name: "statustype", display:"Status", type: "select", options: ["TBD Approved Date", "Approved Date", "TBD Not Approvable As Is Date","Cond with UW Date","With Closing Date"]}
+-- OPTIONS: {database: "byte"} 
+
+
+select 
+  count(*) as 'Count of Total Loans', 
+  (
+    sum(a.LoanWith)
+  ) as 'Value of Total Loans' 
+from 
+  Loan a 
+  join FileData b on a.FileDataID = b.FileDataID 
+  and b.filename not like '26%' 
+  and b.filename not like '%.copy' 
+  and b.filename not like '%+' 
+  join (
+    select 
+      OrganizationID 
+    from 
+      Organization 
+    where 
+      code not like '26%'
+  ) org on b.OrganizationID = org.OrganizationID 
+  join (
+    select 
+      x.filedataid, 
+      x.loanstatus, 
+      x.fundingdate,
+	  x.CustomStatus9Date as  'TBD Approved Date',
+	  x.ApprovedDate as 'Approved Date',
+	  x.CustomStatus8Date as 'TBD Not Approvable As Is Date',
+	  x.CustomStatus2Date as 'Cond with UW Date',
+	  x.InClosingDate as 'With Closing Date',
+      sfdict.lookupvalue 
+    from 
+      status x 
+      join dictsalesforcevalues sfdict on x.loanstatus = sfdict.sourcevalue 
+      and dictname = 'loanstatus'
+  ) st on a.filedataid = st.filedataid 
+where [{{statustype}}] is not null

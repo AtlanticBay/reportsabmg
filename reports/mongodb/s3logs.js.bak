@@ -1,0 +1,31 @@
+// Logs (s3 TEST)
+// Search Informatica Integration Error logs by date
+// OPTIONS: { mongodatabase: "logFiles"}
+// FILTER: {filter: "link", column: "File"}
+// VARIABLE : {name:"range", display: "Log File Date", type:"daterange", default:{"start":"today","end":"now"}}
+// VARIABLE : {name:"taskname", display: "Integration Task Name", type:"select", options:["All Tasks (No Filter)","Prod_st_BYTEtoSF_ContactVersion","Prod_st_BYTEtoSF_Contact_Employee","Prod_st_BYTEtoSF_Loan","Prod_st_BYTEtoSF_LoanRelationship_AdditionalParty","Prod_st_BYTEtoSF_LoanRelationship_Borrowers","Prod_st_BYTEtoSF_LoanRelationship_FileData","Prod_st_BYTEtoSF_LoanRelationship_FileData_Clean_Contact","Prod_st_BYTEtoSF_LoanRelationship_Party","Prod_st_BYTEtoSF_LoanProperty","Prod_st_BYTEtoSF_Status","Prod_st_BYTEtoSF_Condition","Prod_st_BYTEtoSF_Term","Prod_st_BYTEtoSF_Term_Update","Prod_st_BYTEtoSF_Term_Update"]}
+
+
+var start = new Date(range.start).getTime() + 18000000;
+var end  = new Date(range.end).getTime() + 18000000;
+// Query collection
+if (taskname=='All Tasks (No Filter)')
+{
+var result = db.testlogs.find({"dateCreated":{$gte: ISODate(range.start),$lte: ISODate(range.end)}})
+} else {
+var result = db.testlogs.find({"dateCreated":{$gte: ISODate(range.start),$lte: ISODate(range.end)},"taskName": taskname})
+}
+
+//var result=db.testlogs.find()
+// Build report rows
+var rows = [];
+result.forEach(function(el) {
+    rows.push({
+           'Error Log Date': el.dateCreated.toString(),
+           'Task Name': el.taskName,
+           'File': el.fullPath,
+           'Error Count': el.errorCount
+            });
+});
+//Print out the rows
+ printjson(rows);
