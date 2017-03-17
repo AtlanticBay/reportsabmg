@@ -5,7 +5,7 @@ return array(
 	'reportDir' => 'reports',
 
 	//the root directory of all dashboards
-	'dashboardDir' => 'sample_dashboards',
+	'dashboardDir' => 'dashboards',
 
 	//the directory where things will be cached
 	//this is relative to the project root by default, but can be set to an absolute path too
@@ -98,31 +98,31 @@ return array(
 		'main'=>array(
 			// Supports AdoDB connections
 			'ado'=>array(
-				'uri'=>'mysql://username:password@localhost/database'
+				'uri'=>$_SERVER['ADO_STRING']
 			),
 
 			// Supports and PDO database
 			// Salesforce Backup DB
 			'pdo'=>array(
-				'dsn'=>'mysql:host=sfbackup.c5ux0fcqhleb.us-west-2.rds.amazonaws.com;dbname=SFBackup',
-				'user'=>'root',
-				'pass'=>'DGPIabmg2016!',
+						'dsn'=>'mysql:host=' . $_SERVER['SFB_HOST'] . ';dbname=' . $_SERVER['SFB_DBNAME'],
+						'user'=>$_SERVER['SFB_USERNAME'],
+						'pass'=>$_SERVER['SFB_PASSWORD'],
 			),
 			// FileAssignments Whatif Reports
 			'whatif'=>array(
-                                'dsn'=>'mysql:host=fileassignments.cgbebl8qstsu.us-east-1.rds.amazonaws.com;dbname=fileassignments',
-                                'user'=>'reports',
-                                'pass'=>'DGPIabmg2016!',
+                            'dsn'=>'mysql:host=' . $_SERVER['FA_HOST']. ';dbname=' . $_SERVER['FA_DBNAME'],
+                            'user'=>$_SERVER['FA_USERNAME'],
+                            'pass'=>$_SERVER['FA_PASSWORD'],
                         ),
 			// Byte
 			'byte'=>array(
-                                'dsn'=>'dblib:host=192.168.250.10:1433;dbname=whatif;charset=utf8',
-                                'user'=>'huzaifazainuddin',
-                                'pass'=>'HZabmg2015!',
+				'dsn'=>'dblib:host=' . $_SERVER['MSSSQL_HOST'] . ';port=1433;dbname=' . $_SERVER['MSSQL_DBNAME'],
+                                'user'=>$_SERVER['MSSQL_USERNAME'],
+                                'pass'=>$_SERVER['MSSQL_PASSWORD'],
 			),
 			// Supports MongoDB
 			'mongo'=>array(
-				'host'=>'localhost',
+				'host'=>$_SERVER['MONGO_HOST'],
 				'port'=>'27017'
 			),
 		),

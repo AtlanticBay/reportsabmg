@@ -3,3 +3,8 @@ cache/
 classes/local/*.php
 templates/local
 vendor/
+
+# Elastic Beanstalk Files
+.elasticbeanstalk/*
+!.elasticbeanstalk/*.cfg.yml
+!.elasticbeanstalk/*.global.yml

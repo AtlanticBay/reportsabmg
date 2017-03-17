@@ -105,7 +105,7 @@
 
             this.showDropdowns = false;
             this.showWeekNumbers = false;
-            this.timePicker = false;
+            this.timePicker = true;
             this.timePickerIncrement = 30;
             this.timePicker12Hour = true;
             this.singleDatePicker = false;
@@ -119,7 +119,7 @@
             this.applyClass = 'btn-success';
             this.cancelClass = 'btn-default';
 
-            this.format = 'MM/DD/YYYY';
+            this.format = 'MM/DD/YYYY h:mm A';
             this.separator = ' - ';
 
             this.locale = {
