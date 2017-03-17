@@ -114,12 +114,12 @@ return array(
                             'user'=>$_SERVER['FA_USERNAME'],
                             'pass'=>$_SERVER['FA_PASSWORD'],
                         ),
-			// Byte
-			'byte'=>array(
-				'dsn'=>'dblib:host=' . $_SERVER['MSSSQL_HOST'] . ';port=1433;dbname=' . $_SERVER['MSSQL_DBNAME'],
-                                'user'=>$_SERVER['MSSQL_USERNAME'],
-                                'pass'=>$_SERVER['MSSQL_PASSWORD'],
-			),
+            // Byte
+            'byte'=>array(
+                    'dsn'=>'dblib:host=' . $_SERVER['MSSQL_HOST']. ';port=1433;dbname=' . $_SERVER['MSSQL_DBNAME'],
+                    'user'=>$_SERVER['MSSQL_USERNAME'],
+                    'pass'=>$_SERVER['MSSQL_PASSWORD'],
+            ),
 			// Supports MongoDB
 			'mongo'=>array(
 				'host'=>$_SERVER['MONGO_HOST'],
