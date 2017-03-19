@@ -1,3 +1,5 @@
+[ ![Codeship Status for AtlanticBay/reportsabmg](https://app.codeship.com/projects/61559850-ef24-0134-c869-7ec59b8dfeb8/status?branch=master)](https://app.codeship.com/projects/208777)
+
 Php Reports
 ===========
 
