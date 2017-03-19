@@ -1,5 +1,9 @@
 <?php
 // for build-in php server serve the requested resource as-is.
+if(!isset($_SESSION['username'])) {
+  header("Location: classes/login/login.php");
+  exit;
+}
 if (php_sapi_name() == 'cli-server' && preg_match('/\.(?:png|jpg|jpeg|gif|css|js)$/', $_SERVER["REQUEST_URI"])) {
     return false;
 }
