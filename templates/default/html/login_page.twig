@@ -1,23 +1,20 @@
-{% extends "html/page.twig" %}
-
-{% block title %}Report List{% endblock %}
-
-{% set breadcrumb = {"Report List": true} %}
-
-{% block stylesheets %}
-        {{ parent() }}
-        <link rel="stylesheet" href="{{base}}/public/css/report_list.css" />
-{% endblock %}
-
-{% block header %}
-{% endblock %}
-
-{% block content%}
-        <form method="post" action="index.php">
-            <label for="username">Username:</label><br/>
-            <input type="text" name="username" id="username"><br/>
-            <label for="password">Password:</label><br/>
-            <input type="password" name="password" id="password"><br/>
-            <input type="submit" value="Log In!">
-        </form>
-{% endblock%}
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <title>{% block title %}{{ title }}{% endblock %}</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="../../public/css/report_list.css" />
+    <!-- Le styles -->
+   
+    </head>
+<body>
+<h1>ABMG Reports</h1>
+<form method="post" action="index.php">
+    <label for="username">Username:</label><br/>
+    <input type="text" name="username" id="username"><br/>
+    <label for="password">Password:</label><br/>
+    <input type="password" name="password" id="password"><br/>
+    <input type="submit" value="Log In">
+</form>
+</body>
