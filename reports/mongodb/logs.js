@@ -1,6 +1,6 @@
 // Logs - Search by date
 // Search Informatica Integration Error logs by date
-// OPTIONS: { mongodatabase: "hztest"}
+// OPTIONS: { mongodatabase: "inf"}
 // FILTER: {filter: "link", column: "File Path"}
 // FILTER: {filter: "date", column: "Error Log Date", params: {"format": "m-d-Y h:i A"}}
 // VARIABLE : {name:"str", display: "Start Date", type:"date"}
