@@ -51,7 +51,7 @@ class MongoReportType extends ReportTypeBase {
 		$mongo_database = isset($report->options['Mongodatabase'])? $report->options['Mongodatabase'] : '';
 
 		//command without eval string
-		$command = 'mongo '.$config['host'].':'.$config['port'].'/'.$mongo_database.' --quiet --eval ';
+		$command = 'mongo -u '.$config['user'].' -p '.$config['pass'].' '.$config['host'].':'.$config['port'].'/'.$mongo_database.' --quiet --eval ';
 
 		//easy to read formatted query
 		$report->options['Query_Formatted'] = '<div>
