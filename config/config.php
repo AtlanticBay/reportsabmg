@@ -123,7 +123,9 @@ return array(
 			// Supports MongoDB
 			'mongo'=>array(
 				'host'=>$_SERVER['MONGO_HOST'],
-				'port'=>'27017'
+				'port'=>'27017',
+				'user'=>$_SERVER['MONGO_USER'],
+				'pass'=>$_SERVER['MONGO_PASS']
 			),
 		),
 	),
